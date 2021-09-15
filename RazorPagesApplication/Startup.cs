@@ -41,9 +41,9 @@ namespace RazorPagesApplication
                 app.UseHsts();
             }
 
-            app.UseAuthentication();//использовать авторизацию пользователя на основе cookie [Этот middleware я добавил самостоятельно]
-            app.UseResponseCaching();//кешировать ответы на стороне клиента, для экономии трафика [Этот middleware я добавил самостоятельно]
-            app.UseResponseCompression();//позволяет сжимать ответы при отправке на клиент, для экономии трафика [Этот middleware я добавил самостоятельно]
+            //app.UseAuthentication();//использовать авторизацию пользователя на основе cookie [Этот middleware я добавил самостоятельно]
+            //app.UseResponseCaching();//кешировать ответы на стороне клиента, для экономии трафика [Этот middleware я добавил самостоятельно]
+            //app.UseResponseCompression();//позволяет сжимать ответы при отправке на клиент, для экономии трафика [Этот middleware я добавил самостоятельно]
 
             app.UseHttpsRedirection();//судя по описанию метода, при http запросе, заменяет его на шифрованный hhtps
             app.UseStaticFiles();//разрешение на использование статических файлов (js скрипты,картинки,json файлы и др.)

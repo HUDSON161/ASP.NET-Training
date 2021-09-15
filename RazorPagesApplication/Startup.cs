@@ -23,12 +23,13 @@ namespace RazorPagesApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddRazorPages();//добавляем поддержку Razor страниц
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //старт конвейера обработки запроса
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -40,11 +41,13 @@ namespace RazorPagesApplication
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseAuthentication();//использовать авторизацию пользователя на основе cookie [Этот middleware я добавил самостоятельно]
+            app.UseResponseCaching();//кешировать ответы на стороне клиента, для экономии трафика [Этот middleware я добавил самостоятельно]
+            app.UseResponseCompression();//позволяет сжимать ответы при отправке на клиент, для экономии трафика [Этот middleware я добавил самостоятельно]
 
-            app.UseRouting();
-
+            app.UseHttpsRedirection();//судя по описанию метода, при http запросе, заменяет его на шифрованный hhtps
+            app.UseStaticFiles();//разрешение на использование статических файлов (js скрипты,картинки,json файлы и др.)
+            app.UseRouting();//определяет пути маршрутизации ( пути в адресной строке браузера (до конца не понял что это и зачем) )
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

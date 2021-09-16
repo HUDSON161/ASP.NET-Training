@@ -50,6 +50,8 @@ namespace RazorPagesApplication
             app.UseRouting();//определяет пути маршрутизации ( пути в адресной строке браузера (до конца не понял что это и зачем) )
             app.UseAuthorization();
 
+            app.UseMiddleware<UserMiddleware.MySimpleMiddleware>();//используем кастомный middleware
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
